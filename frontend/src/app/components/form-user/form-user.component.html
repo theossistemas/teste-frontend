@@ -1,0 +1,28 @@
+<app-loader *ngIf="loader$ | async"></app-loader>
+<div class="container-form">
+  <form [formGroup]="formDev" (ngSubmit)="submit()">
+    <button id="button-get-user" type="button" (click)="buscarUserGitHub()">
+      <img id="icon" src="assets/images/github.svg" alt="gitHub_img">
+      Cadastrar com GitHub
+    </button>
+    <app-input
+      label="Usuário GitHub"
+      formControlName="githubUsername"
+      [style]="{'background-color': '#CFD8E3'}"
+    ></app-input>
+
+    <hr width="100%">
+
+    <app-input label="Avatar (URL) " formControlName="avatarUrl"></app-input>
+    <app-input label="Nome (Obrigatório)" formControlName="name"></app-input>
+    <app-input label="Email" formControlName="email"></app-input>
+    <app-input label="Cidade (Obrigatório)" formControlName="city"></app-input>
+
+    <hr width="100%">
+    <H2>PROFISSIONAL</H2>
+    <app-input label="Formação " formControlName="education"></app-input>
+    <app-text-area label="Tecnologia (Obrigatório)" formControlName="technologies" placeholder="ex: HTML/CSS, Vue, Angular etc."></app-text-area>
+
+    <button id="button-submit" type="submit"  [disabled]="formDev.invalid|| (loader$ | async)">Cadastrar</button>
+  </form>
+</div>

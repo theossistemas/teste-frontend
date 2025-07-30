@@ -1,0 +1,10 @@
+<header id="header">
+  <div class="logo">
+    <div id="rectangle"></div>
+    <h1>Cadastro DEV</h1>
+  </div>
+  <form [formGroup]="form" id="pesquisa">
+    <input type="text" formControlName="search" placeholder="Pesquisar Dev" />
+    <span class="material-symbols-outlined icon" (click)="searchDev()" title="Pesquisar"> search </span>
+  </form>
+</header>
