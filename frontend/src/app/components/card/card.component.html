@@ -1,0 +1,58 @@
+<div id="card-user" >
+  <div class="content">
+    <div *ngIf="dataBaseUsers$ | async as dados; else carregando">
+      <div *ngIf="dados.length > 0; else notFoundDev"></div>
+    </div>
+    <div class="card-container" *ngFor="let user of dataBaseUsers$  | async;">
+      <div class="logo">
+        <img [src]="!user.avatarUrl ? 'assets/images/profile-default.jpeg':user.avatarUrl" alt="Foto de {{ user.name }}" loading="lazy" />
+      </div>
+      <div class="card">
+        <div class="description">
+          <h3>{{ user.name }}</h3>
+          <p>{{ user.city }}</p>
+          <p>{{ user.technologies }}</p>
+          <div  class="options">
+            <a [href]="'https://github.com/' + user.githubUsername" target="_blank"
+              title="Acessar GitHub">Acessar GitHub</a
+            >
+            <div class="options-icons">
+              <span class="material-symbols-outlined" title="Editar"  (click)="editUser(user)">
+                edit_square
+                </span>
+                <span class="material-symbols-outlined" (click)="deleteUser(user)" title="Deletar">
+                  delete
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #carregando>
+  <app-loader *ngIf="loader$ | async"></app-loader>
+</ng-template>
+
+<ng-template #notFoundDev>
+  <div id="container-not-fount-dev">
+    <span >Nenhum <strong>dev</strong> encontrado!</span>
+  </div>
+</ng-template>
+
+<ng-template #ContentOfModalUser>
+  <form id="form-card" [formGroup]="formUpdate">
+    <app-input label="Avatar (URL) " formControlName="avatarUrl"></app-input>
+    <app-input label="Nome *" formControlName="name"></app-input>
+    <app-input label="Email" formControlName="email"></app-input>
+    <app-input label="Cidade *" formControlName="city"></app-input>
+    <app-input label="Formação " formControlName="education"></app-input>
+    <app-text-area label="Tecnologia *" formControlName="technologies" placeholder="ex: HTML/CSS, Vue, Angular etc."></app-text-area>
+
+    <div class="container-buttons">
+      <button  id="button-close" (click)="close()">Fechar</button>
+      <button id="button-save" (click)="updateDev()" [disabled]="formUpdate.invalid">Alterar</button>
+      </div>
+  </form>
+</ng-template>
