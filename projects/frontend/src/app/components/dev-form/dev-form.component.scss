@@ -1,0 +1,144 @@
+@use "../../../styles/variables.scss" as vars;
+
+.form-card {
+  height: fit-content;
+  --mat-card-elevated-container-color: white;
+  --mat-card-elevated-container-elevation: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --mat-card-elevated-container-shape: vars.$border-radius-sm;
+}
+
+.github-section {
+  margin-bottom: 2rem;
+
+  h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .section-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+}
+
+.github-button {
+  width: 100%;
+  margin-bottom: 2rem;
+  color: vars.$color-primary;
+  border: 2px solid vars.$color-primary;
+  background: white;
+  border-radius: vars.$border-radius-sm;
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  outline: none;
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.9);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+}
+
+.form-section {
+  margin-block: 2rem;
+}
+
+.form-section h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+textarea {
+  resize: none;
+}
+
+.register-button {
+  width: 100%;
+  background: vars.$color-success;
+  color: vars.$color-primary;
+  border: none;
+  border-radius: vars.$border-radius-sm;
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.25);
+  }
+}
+
+.cancel-button {
+  background: transparent;
+  color: vars.$color-text-secondary;
+  border: 1px solid vars.$color-text-secondary;
+  border-radius: vars.$border-radius-sm;
+  padding: 12px 16px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  outline: none;
+  margin-left: vars.$spacing-md;
+
+  &:hover {
+    background: vars.$color-text-secondary;
+    color: white;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.25);
+  }
+}

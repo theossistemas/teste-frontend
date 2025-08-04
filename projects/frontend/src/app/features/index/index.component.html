@@ -1,0 +1,21 @@
+<app-header (searchChange)="onSearchChange($event)"></app-header>
+
+<div class="main-container">
+  <div class="form-panel">
+    <app-dev-form></app-dev-form>
+  </div>
+
+  <div class="developers-panel">
+    <div *ngIf="loading" class="loading">
+      <p>Carregando desenvolvedores...</p>
+    </div>
+
+    <app-dev-list
+      *ngIf="!loading"
+      [allDevelopers]="filteredDevelopers"
+      [searchTerm]="searchTerm"
+      (editDeveloper)="onEditDeveloper($event)"
+      (deleteDeveloper)="onDeleteDeveloper($event)"
+    ></app-dev-list>
+  </div>
+</div>

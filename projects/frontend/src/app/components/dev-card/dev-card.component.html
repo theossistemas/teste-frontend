@@ -1,0 +1,61 @@
+<div class="dev-card">
+  <div class="card-header">
+    <div class="dev-avatar">
+      <img
+        *ngIf="developer.avatarUrl; else defaultAvatar"
+        [src]="developer.avatarUrl"
+        [alt]="developer.name"
+        class="avatar-image"
+      />
+      <ng-template #defaultAvatar>
+        <div class="avatar-placeholder">{{ developer.name.charAt(0) }}</div>
+      </ng-template>
+    </div>
+    <div class="card-title">{{ developer.name }}</div>
+    <div class="card-subtitle">{{ developer.city }}</div>
+  </div>
+
+  <div class="card-content">
+    <div class="tech-text">
+      <p>{{ developer.technologies.join(', ') }}</p>
+      <p>{{ developer.education }}</p>
+    </div>
+  </div>
+
+  <div class="card-actions">
+    <a
+      [href]="developer.githubProfile"
+      target="_blank"
+      class="github-link"
+      *ngIf="developer.githubProfile"
+      title="Acessar perfil no GitHub"
+    >
+      Acessar GitHub
+    </a>
+    <a
+      [href]="'mailto:' + developer.email"
+      class="email-link"
+      *ngIf="developer.email"
+      title="Enviar email"
+    >
+      <mat-icon>email</mat-icon>
+    </a>
+
+    <div class="action-buttons">
+      <button
+        class="action-button edit-button"
+        (click)="onEdit()"
+        title="Editar desenvolvedor"
+      >
+        <img src="/images/edit.svg" alt="Editar" />
+      </button>
+      <button
+        class="action-button delete-button"
+        (click)="onDelete()"
+        title="Excluir desenvolvedor"
+      >
+        <img src="/images/trash-2.svg" alt="Excluir" />
+      </button>
+    </div>
+  </div>
+</div>

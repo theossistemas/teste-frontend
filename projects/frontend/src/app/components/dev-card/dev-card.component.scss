@@ -1,0 +1,200 @@
+@use "../../../styles/variables.scss" as vars;
+
+.dev-card {
+  background: vars.$color-primary;
+  color: vars.$color-text-primary;
+  border-radius: vars.$border-radius-sm;
+  @include vars.box-shadow(1);
+  @include vars.transition;
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    @include vars.box-shadow(2);
+    transform: translateY(-2px);
+  }
+
+  .card-header {
+    color: vars.$color-text-primary;
+    padding: vars.$spacing-lg vars.$spacing-lg vars.$spacing-md;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-xs;
+  }
+
+  .card-title {
+    font-size: vars.$font-size-xl;
+    font-weight: 600;
+    margin: 0;
+    color: vars.$color-text-primary;
+    line-height: 1.2;
+  }
+
+  .card-subtitle {
+    color: vars.$color-text-secondary;
+    font-size: vars.$font-size-sm;
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+  }
+
+  .card-content {
+    padding: 0 vars.$spacing-lg vars.$spacing-lg;
+  }
+
+  .card-actions {
+    padding: vars.$spacing-md vars.$spacing-lg vars.$spacing-lg;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.dev-avatar {
+  font-size: vars.$font-size-xxl;
+  width: 60px;
+  height: 60px;
+  background: vars.$color-primary-light;
+  border-radius: 50%;
+  @include vars.flex-center;
+  @include vars.box-shadow(2);
+  position: absolute;
+  top: -15px;
+  right: vars.$spacing-md;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: vars.$color-secondary;
+    color: white;
+    font-weight: 600;
+    font-size: vars.$font-size-xl;
+  }
+}
+
+.tech-text {
+  margin-top: vars.$spacing-md;
+
+  p {
+    color: vars.$color-text-secondary;
+    font-size: vars.$font-size-sm;
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+.github-link {
+  color: vars.$color-support;
+  text-decoration: none;
+  font-size: vars.$font-size-sm;
+  font-weight: 500;
+  @include vars.transition;
+  padding: vars.$spacing-sm vars.$spacing-md;
+  border-radius: vars.$border-radius-sm;
+  background: rgba(104, 211, 145, 0.1);
+  border: 1px solid rgba(104, 211, 145, 0.2);
+
+  &:hover {
+    color: #5bbf7a;
+  }
+}
+
+.email-link {
+  color: vars.$color-secondary;
+  text-decoration: none;
+  @include vars.transition;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-left: vars.$spacing-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    color: #e0e0e0;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.action-buttons {
+  display: flex;
+}
+
+.action-button {
+  background-color: vars.$color-primary;
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+
+
+
+
+
+@include vars.tablet-up {
+  .dev-avatar {
+    width: 70px;
+    height: 70px;
+    font-size: vars.$font-size-xxl;
+    top: -20px;
+  }
+
+  .tech-chips .chip {
+    font-size: vars.$font-size-md;
+    height: 36px;
+  }
+}
+
+@include vars.desktop-up {
+  .dev-avatar {
+    width: 80px;
+    height: 80px;
+    font-size: vars.$font-size-xxl;
+    top: -25px;
+  }
+
+  .tech-chips .chip {
+    font-size: vars.$font-size-md;
+    height: 40px;
+  }
+}

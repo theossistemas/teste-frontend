@@ -1,0 +1,96 @@
+<mat-card class="form-card">
+
+  <mat-card-content>
+    <form [formGroup]="developerForm" (ngSubmit)="onSubmit()">
+
+      <div class="github-section">
+        <h3>CONECTAR COM GITHUB (OPCIONAL)</h3>
+        <p class="section-description">
+          Conecte com GitHub para preenchimento automático ou preencha manualmente os campos abaixo.
+        </p>
+        <button type="button" class="github-button" (click)="connectWithGitHub()" [disabled]="isLoading">
+          <img src="images/github-icon.svg" alt="github logo" />
+          <span *ngIf="!isLoading">Conectar com GitHub</span>
+          <span *ngIf="isLoading">Conectando...</span>
+        </button>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="form-section">
+        <h3>INFORMAÇÕES PESSOAIS</h3>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuário GitHub *</mat-label>
+          <input matInput placeholder="Digite o usuário do GitHub" formControlName="githubUsername" />
+          <mat-icon matSuffix>code</mat-icon>
+          <mat-error *ngIf="developerForm.get('githubUsername')?.hasError('required')">
+            Usuário GitHub é obrigatório
+          </mat-error>
+          <mat-error *ngIf="developerForm.get('githubUsername')?.hasError('minlength')">
+            Usuário GitHub deve ter pelo menos 2 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Avatar (URL)</mat-label>
+          <input matInput placeholder="URL da imagem de perfil" formControlName="avatarUrl" />
+          <mat-icon matSuffix>image</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome completo" formControlName="name" />
+          <mat-icon matSuffix>person_outline</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="email@exemplo.com" formControlName="email" />
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Cidade</mat-label>
+          <input matInput placeholder="Sua cidade" formControlName="city" />
+          <mat-icon matSuffix>location_on</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="form-section">
+        <h3>PROFISSIONAL</h3>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Formação</mat-label>
+          <input matInput placeholder="Sua formação acadêmica" formControlName="education" />
+          <mat-icon matSuffix>school</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Tecnologias</mat-label>
+          <textarea
+            matInput
+            placeholder="ex: HTML/CSS, Vue, Angular etc."
+            rows="3"
+            formControlName="technologies"
+          ></textarea>
+          <mat-icon matSuffix>code</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <mat-card-actions>
+        <button type="submit" class="register-button" [disabled]="!isFormValid">
+          {{ isEditing ? 'Atualizar' : 'Cadastrar' }}
+        </button>
+        <button
+          *ngIf="isEditing"
+          type="button"
+          class="cancel-button"
+          (click)="cancelEdit()"
+        >
+          Cancelar
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

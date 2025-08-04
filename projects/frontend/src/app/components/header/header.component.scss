@@ -1,0 +1,148 @@
+@use "../../../styles/variables.scss" as vars;
+
+.header {
+  background: vars.$color-primary;
+  color: vars.$color-text-primary;
+  padding: 0 vars.$spacing-md;
+
+  &__content {
+    @include vars.flex-center;
+    flex-direction: column;
+    gap: vars.$spacing-md;
+    width: 100%;
+    margin: 0 auto;
+    padding: vars.$spacing-md 0;
+  }
+
+  &__logo {
+    @include vars.flex-center;
+    flex-direction: column;
+    gap: vars.$spacing-sm;
+
+    &-image {
+      height: 20px;
+      width: auto;
+    }
+
+    &-title {
+      font-size: vars.$font-size-lg;
+      margin: 0;
+      font-weight: 500;
+
+      &--accent {
+        color: vars.$color-secondary;
+      }
+    }
+  }
+
+  &__search {
+    @include vars.flex-center;
+    width: 100%;
+
+    &-wrapper {
+      position: relative;
+      width: 100%;
+      height: 44px;
+    }
+
+    &-input {
+      width: 100%;
+      height: 100%;
+      padding: 0 48px 0 vars.$spacing-md;
+      background-color: vars.$color-bg-secondary;
+      border: 1px solid vars.$color-border-primary;
+      border-radius: vars.$border-radius-sm;
+      color: vars.$color-text-primary;
+      font-size: vars.$font-size-md;
+      outline: none;
+      box-sizing: border-box;
+      @include vars.transition;
+
+      &::placeholder {
+        color: vars.$color-text-muted;
+      }
+
+      &:hover {
+        border-color: vars.$color-border-hover;
+        @include vars.box-shadow(2);
+      }
+
+      &:focus {
+        border-color: vars.$color-border-focus;
+        box-shadow: 0 0 0 2px rgba(vars.$color-secondary, 0.3);
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      right: vars.$spacing-sm;
+      top: 50%;
+      transform: translateY(-50%);
+      color: vars.$color-text-secondary;
+      font-size: vars.$font-size-xl;
+      width: vars.$font-size-xl;
+      height: vars.$font-size-xl;
+    }
+  }
+
+  @include vars.tablet-up {
+    padding: 0 vars.$spacing-lg;
+
+    &__content {
+      @include vars.flex-between;
+      flex-direction: row;
+      max-width: 768px;
+      padding: vars.$spacing-sm 0;
+    }
+
+    &__logo {
+      flex-direction: row;
+      gap: vars.$spacing-md;
+
+      &-image {
+        height: 22px;
+      }
+
+      &-title {
+        font-size: vars.$font-size-xl;
+      }
+    }
+
+    &__search {
+      width: auto;
+
+      &-wrapper {
+        width: 300px;
+        height: 40px;
+      }
+
+      &-input {
+        font-size: vars.$font-size-sm;
+      }
+    }
+  }
+
+  @include vars.desktop-up {
+    padding: 0 vars.$spacing-xl;
+
+    &__content {
+      max-width: 1200px;
+    }
+
+    &__logo {
+      &-image {
+        height: 25px;
+      }
+
+      &-title {
+        font-size: vars.$font-size-xxl;
+      }
+    }
+
+    &__search {
+      &-wrapper {
+        width: 360px;
+      }
+    }
+  }
+}
